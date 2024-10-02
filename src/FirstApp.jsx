@@ -1,13 +1,14 @@
 
-const getMessage = (message) => `Hola, ${message}`
 
-export const FirstApp = () => {
+export const FirstApp = ({ title, subtitle }) => {
+
+  // console.log(props)
 
   return (
     <>
-      <h1>{ getMessage('Juan') }</h1>
+      <h1>{ title }</h1>
       {/* <code>{ JSON.stringify(newMessage) }</code> */ }
-      <p>Soy un parrafo</p>
+      <p>{ subtitle + 1 }</p>
     </>
   )
 }

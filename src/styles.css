@@ -4,9 +4,11 @@ html, body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   padding: 70px;
+  text-align: center;
 }
 
 button {
   padding: 12px;
   font-size: 1.3rem;
+  margin-right: 5px;
 }

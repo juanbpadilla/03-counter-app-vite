@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -8,24 +9,18 @@ import PropTypes from 'prop-types'
 //    }
 
 export const CounterApp = ({ value }) => {
+  const [counter, setCounter] = useState(value)
 
-  // function handleAdd(event) { console.log(event) }
-  // function handleAdd(event, newValue) {
-  //   console.log(newValue)
-  // }
-
-  // Como función de flecha
-  // const handleAdd = (event, newValue) => {
-  //   console.log(newValue)
-  // }
-  const handleAdd = (event) => {
-    console.log(event)
+  const handleAdd = () => {
+    setCounter(counter + 1)
+    // ↕️ tambien es válido ↕️ (c toma el valor anterior del counter)
+    // setCounter((c) => c + 1)
   }
 
   return (
     <>
       <h1>CounterApp</h1>
-      <h2> { value } </h2>
+      <h2> { counter } </h2>
 
       {/* <button onClick={ function (event) { console.log(event) } }> */ }
       {/* <button onClick={ (event) => handleAdd(event) }> */ }

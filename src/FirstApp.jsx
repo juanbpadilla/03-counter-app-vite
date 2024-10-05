@@ -1,7 +1,8 @@
 
 import PropTypes from 'prop-types';
 
-export const FirstApp = ({ title, subTitle, name }) => {
+// export const FirstApp = ({ title, subTitle, name }) => {
+export const FirstApp = ({ title= 'Default title', subTitle = 'Default Subtitle', name = 'Default Name' }) => {
 
   // console.log(props)
 
@@ -35,8 +36,8 @@ FirstApp.propTypes = {
 // .defaultProps Actualmente deprecated, se recomienda establecer 
 // ..los valores por defecto en la función
 // ..FirstApp = ({ title = 'No hay t..', subTitle = 'No hay subt..', name = 'Juan Pe..' }) => {
-FirstApp.defaultProps = {
-  title: 'No hay título',
-  subTitle: 'No hay subtítulo',
-  name: 'Juan Perez'
-}
+// FirstApp.defaultProps = {
+//   title: 'No hay título',
+//   subTitle: 'No hay subtítulo',
+//   name: 'Juan Perez'
+// }

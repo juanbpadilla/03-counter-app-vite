@@ -10,10 +10,12 @@ import PropTypes from 'prop-types'
 
 export const CounterApp = ({ value }) => {
 
-  // useState es un hook que permite añadir estado a un componente funcional
-  // setCounter es una función que permite modificar el estado
-  // Cuando cambia el estado, se vuelve a renderizar el componente completo(CounterApp)
-  console.log('render')
+  /**
+   * useState es un hook que permite añadir estado a un componente funcional
+   * setCounter es una función que permite modificar el estado
+   * Cuando cambia el estado, se vuelve a renderizar el componente completo(CounterApp)
+   * console.log('render')
+   */
 
   const [counter, setCounter] = useState(value)
 

@@ -57,16 +57,16 @@ describe('Pruebas en <FirstApp />', () => {
   test('debe de mostrar el título en un h1', () => {
 
     const title = 'Hola soy Goku';
-    const { container, getByText } = render( <FirstApp title={ title } /> );
+    // eslint-disable-next-line no-unused-vars
+    const { container, getByText, getByTestId } = render( <FirstApp title={ title } /> );
 
     /**
      * La función getByText() busca un elemento por su contenido de texto
      * Si el elemento no existe, la función getByText() arroja un error
      * 
-     * expect( getByText(title) )
-     */
-
-    /**
+     expect( getByText(title) )
+     *
+     *
      * toBeTruthy() evalua si el valor pasado como argumento es verdadero
      * Si el valor es verdadero, la prueba pasa
      * toBeTruthy() complementa a getByText(), si getByText() arroja un error
@@ -76,31 +76,62 @@ describe('Pruebas en <FirstApp />', () => {
     expect( getByText(title) ).toBeTruthy();
     // 🚫 Hasta aquí todavía no estamos haciendo lo q pide el test
 
-    // ✅ A partir de aquí estamos haciendo lo q pide el test
-
     /**
      * Con querySelector() se busca un elemento por su selector
      * ..en este caso se busca un elemento h1 en el contenedor
      * Si el elemento no existe, querySelector() retorna null
-     */
-    const h1 = container.querySelector('h1');
-
-    /**
+     * const h1 = container.querySelector('h1');
+     * 
      * aquí con innerHTML estamos obteniendo el contenido del h1
-     * expect( h1.innerHTML )
+     expect( h1.innerHTML )
      * 
      * Si el contenido del h1 es igual al título, la prueba pasa
-     * expect( h1.innerHTML ).toBe( title );
+     expect( h1.innerHTML ).toBe( title );
      * ⚠️ esta prueba es muy estricta, si el h1 tiene un espacios en blanco
      * ..u otros caracteres alrededor del título, la prueba falla
-     */
-    
-    /**
+     *
+     expect( h1.innerHTML ).toContain( title );
      * ✅ esta prueba es menos estricta, ya que evalua si el título
      * ..se encuentra contenido en el h1, sin importar si hay espacios
      * ..en blanco u otros caracteres alrededor del título
     */
-    expect( h1.innerHTML ).toContain( title );
+   
+    /**
+     * Esta prueba solo evalua si el elemento con el atributo data-testid='test-title'
+     * ..existe en el contenedor
+     expect( getByTestId('test-title') ).toBeTruthy()
+
+     * 
+     * En cambio, esta prueba evalua si el contenido del elemento con el atributo
+     * ..data-testid='test-title' es igual al título pasado como argumento
+     * ..al componente <FirstApp />, lo que es más específico
+     * usamos toContain() en lugar de toBe() para que la prueba sea menos estricta
+     * ..y no falle si hay espacios en blanco u otros caracteres alrededor del título
+     */
+     expect( getByTestId('test-title').innerHTML ).toContain( title );
+
+  });
+
+  test('debe de mostrar el subtítulo enviado por props', () => {
+
+    const title = 'Hola soy Goku';
+    const subTitle = 'Soy un subtítulo';
+    const { getAllByText } = render(
+      <FirstApp 
+        title={ title }
+        subTitle={ subTitle }
+      /> 
+    );
+
+    /**
+     * La función getAllByText() busca todos los elementos que contienen
+     * ..el subtítulo en el contenedor renderizado
+     * Y los almacena en un array que se puede evaluar con expect()
+     * con el .length se evalua la cantidad de elementos encontrados
+     * Si el subtítulo se muestra dos veces, el array tendrá dos elementos
+     * ..y la prueba pasará
+     */
+    expect( getAllByText(subTitle).length ).toBe(2);
 
   });
 

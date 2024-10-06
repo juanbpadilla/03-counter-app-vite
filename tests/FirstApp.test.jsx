@@ -3,31 +3,38 @@ import { FirstApp } from "../src/FirstApp";
 
 describe('Pruebas en <FirstApp />', () => {
 
-  test('debe de hacer match con el snapshot', () => {
 
-    const title = 'Hola, soy Goku';
+  /**
+   * ⚠️
+   * Por ahora no necesitamos hacer match con el snapshot
+   * ..ya nuestro componente no tiene contenido estático
+   * ⚠️
+   */
+  // test('debe de hacer match con el snapshot', () => {
 
-    /**
-     * La función render() recibe un componente de React como argumento y lo renderiza
-     * La función render() retorna un objeto con propiedades que permiten interactuar
-     * ..con el componente renderizado y sus elementos hijos (si los tiene)
-     * 
-     * En container se almacena el nodo raíz del componente renderizado
-     */
-    const { container } = render( <FirstApp title={ title } /> );
+  //   const title = 'Hola, soy Goku';
 
-    /**
-     * ⚠️ IMPORTANTE ⚠️
-     * La función toMatchSnapshot() evalua si el valor pasado como argumento
-     * ..coincide con el snapshot previamente guardado 
-     * Si no existe un snapshot previo, la función crea uno nuevo
-     * ..se crea una carpeta __snapshots__ en la carpeta de las pruebas
-     * ..con un archivo que contiene el snapshot del componente renderizado
-     * ..y el test falla
-     */
-    expect( container ).toMatchSnapshot();
+  //   /**
+  //    * La función render() recibe un componente de React como argumento y lo renderiza
+  //    * La función render() retorna un objeto con propiedades que permiten interactuar
+  //    * ..con el componente renderizado y sus elementos hijos (si los tiene)
+  //    * 
+  //    * En container se almacena el nodo raíz del componente renderizado
+  //    */
+  //   const { container } = render( <FirstApp title={ title } /> );
 
-  });
+  //   /**
+  //    * ⚠️ IMPORTANTE ⚠️
+  //    * La función toMatchSnapshot() evalua si el valor pasado como argumento
+  //    * ..coincide con el snapshot previamente guardado 
+  //    * Si no existe un snapshot previo, la función crea uno nuevo
+  //    * ..se crea una carpeta __snapshots__ en la carpeta de las pruebas
+  //    * ..con un archivo que contiene el snapshot del componente renderizado
+  //    * ..y el test falla
+  //    */
+  //   expect( container ).toMatchSnapshot();
+
+  // });
   /**
    * ⚠️ IMPORTANTE ⚠️
    * Cuando el snapshot no coincide con el componente renderizado
@@ -55,8 +62,9 @@ describe('Pruebas en <FirstApp />', () => {
     /**
      * La función getByText() busca un elemento por su contenido de texto
      * Si el elemento no existe, la función getByText() arroja un error
+     * 
+     * expect( getByText(title) )
      */
-    // expect( getByText(title) )
 
     /**
      * toBeTruthy() evalua si el valor pasado como argumento es verdadero
@@ -87,12 +95,12 @@ describe('Pruebas en <FirstApp />', () => {
      * ..u otros caracteres alrededor del título, la prueba falla
      */
     
-    expect( h1.innerHTML ).toContain( title );
     /**
      * ✅ esta prueba es menos estricta, ya que evalua si el título
      * ..se encuentra contenido en el h1, sin importar si hay espacios
      * ..en blanco u otros caracteres alrededor del título
-     */
+    */
+    expect( h1.innerHTML ).toContain( title );
 
   });
 

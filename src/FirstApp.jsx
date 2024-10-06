@@ -10,7 +10,7 @@ export const FirstApp = ({ title= 'Default title', subTitle = 'Default Subtitle'
     <>
       {/* Se puede utilizar la propiedad data-testid para establecer un id
           ..a un elemento, esto es útil para realizar pruebas con Jest y Testing Library */}
-      <div data-testid='test-title'> { title } </div>
+      <h1 data-testid='test-title'> { title } </h1>
       {/* <code>{ JSON.stringify(newMessage) }</code> */ }
       <p>{ subTitle }</p>
       <p>{ subTitle }</p>

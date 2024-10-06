@@ -3,10 +3,11 @@ import { getImagen } from "../../src/base-pruebas/11-async-await";
 
 describe('Pruebas en 11-async-await.js', () => {
 
-  test('getImagen debe de retornar un URL de la imagen', async () => {
+  test('getImagen debe de retornar un error si no tenemos api key', async () => {
 
     // const url = await getImagen();
     const resp = await getImagen();
+    console.log( resp );
 
     // 🚫 este test evaluara que el tipo de dato de url sea un string
     // ...pero como la respuesta siempre sera un string, no tiene sentido
@@ -16,7 +17,10 @@ describe('Pruebas en 11-async-await.js', () => {
     // ...que es lo que retorna la funcion getImagen en caso de error
     // ...asi que si la respuesta es diferente a 'No se encontró la imagen'
     // ...significa que la respuesta es un URL de una imagen
-    expect( resp ).not.toBe('No se encontró la imagen');
+    // expect( resp ).not.toBe('No se encontró la imagen');
+
+    // En este caso esperamos que la petición falle
+    expect( resp ).toBe('No se encontró la imagen');
 
   });
 

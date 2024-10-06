@@ -4,10 +4,10 @@ export const getImagen = async () => {
 
     try {
 
-        const apiKey = 'tNR73FdRFrXJJ5HkR2cngTIaP4YSRos1';
+        // const apiKey = 'tNR73FdRFrXJJ5HkR2cngTIaP4YSRos1';
 
         // ⚠️ ponemos un api key incorrecto para que falle
-        // const apiKey = 'tNR73FdRFrXJJ5HkR2cngT';
+        const apiKey = 'tNR73FdRFrXJJ5HkR2cngT';
         const resp = await fetch(`http://api.giphy.com/v1/gifs/random?api_key=${apiKey}`);
         const { data } = await resp.json();
 

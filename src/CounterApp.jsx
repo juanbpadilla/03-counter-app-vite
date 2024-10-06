@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-
-// Si la función no necesita acceder a las props, 
-// se puede hacer fuera del componente:
-//    const handleAdd = (event) => {
-//      console.log(event)
-//    }
+/**
+ * Si la función necesita acceder a las props,
+ * se puede hacer dentro del componente
+ *  const handleAdd = (event) => {
+ *    console.log(event)
+ *  } 
+ */
 
 export const CounterApp = ({ value }) => {
 
@@ -36,7 +37,11 @@ export const CounterApp = ({ value }) => {
 
       <button onClick={ handleAdd }>+1</button>
       <button onClick={ handleSubtract }>-1</button>
-      <button onClick={ handleReset }>Reset</button>
+
+      {/* aria-label es un atributo que se usa para describir un elemento 
+      *  de forma que un lector de pantalla pueda entender su función
+      *  en este caso, se usa para identificar el botón en las pruebas*/}
+      <button aria-label='btn-reset' onClick={ handleReset }>Reset</button>
     </>
   )
 }
